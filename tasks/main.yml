@@ -41,6 +41,7 @@
   notify:
     - reload nginx
 
+<<<<<<< HEAD
 - name: Generate .htpasswd file
   command: "htpasswd -b -c {{ nginx_htpasswd_file }} {{ nginx_htpasswd_user }} {{ nginx_htpasswd_pass }}"
   when: nginx_htpasswd_file is defined
@@ -62,3 +63,10 @@
   service: 
     name: nginx 
     state: started
+=======
+- name: Ensure nginx is enabled to start at boot.
+  service: name=nginx enabled=yes
+
+- name: Ensure nginx is started
+  service: name=nginx state=started
+>>>>>>> origin/master
